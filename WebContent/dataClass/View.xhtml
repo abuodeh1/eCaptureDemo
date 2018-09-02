@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DataClassViewDlg" widgetVar="DataClassViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDataClassTitle}">
+            <h:form id="DataClassViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{dataClassController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDataClassLabel_dataClassID}"/>
+                        <h:outputText value="#{dataClassController.selected.dataClassID}" title="#{bundle.ViewDataClassTitle_dataClassID}"/>
+                        <h:outputText value="#{bundle.ViewDataClassLabel_dataClassClonedIndex}"/>
+                        <h:outputText value="#{dataClassController.selected.dataClassClonedIndex}" title="#{bundle.ViewDataClassTitle_dataClassClonedIndex}"/>
+                        <h:outputText value="#{bundle.ViewDataClassLabel_dataClassCreatedBy}"/>
+                        <h:outputText value="#{dataClassController.selected.dataClassCreatedBy}" title="#{bundle.ViewDataClassTitle_dataClassCreatedBy}"/>
+                        <h:outputText value="#{bundle.ViewDataClassLabel_dataClassCreateDatetime}"/>
+                        <h:outputText value="#{dataClassController.selected.dataClassCreateDatetime}" title="#{bundle.ViewDataClassTitle_dataClassCreateDatetime}"/>
+                        <h:outputText value="#{bundle.ViewDataClassLabel_dataClassDesc}"/>
+                        <h:outputText value="#{dataClassController.selected.dataClassDesc}" title="#{bundle.ViewDataClassTitle_dataClassDesc}"/>
+                        <h:outputText value="#{bundle.ViewDataClassLabel_dataClassFieldCount}"/>
+                        <h:outputText value="#{dataClassController.selected.dataClassFieldCount}" title="#{bundle.ViewDataClassTitle_dataClassFieldCount}"/>
+                        <h:outputText value="#{bundle.ViewDataClassLabel_dataClassIndex}"/>
+                        <h:outputText value="#{dataClassController.selected.dataClassIndex}" title="#{bundle.ViewDataClassTitle_dataClassIndex}"/>
+                        <h:outputText value="#{bundle.ViewDataClassLabel_dataClassName}"/>
+                        <h:outputText value="#{dataClassController.selected.dataClassName}" title="#{bundle.ViewDataClassTitle_dataClassName}"/>
+                        <h:outputText value="#{bundle.ViewDataClassLabel_dataClassNameAr}"/>
+                        <h:outputText value="#{dataClassController.selected.dataClassNameAr}" title="#{bundle.ViewDataClassTitle_dataClassNameAr}"/>
+                        <h:outputText value="#{bundle.ViewDataClassLabel_dataClassStatus}"/>
+                        <h:outputText value="#{dataClassController.selected.dataClassStatus}" title="#{bundle.ViewDataClassTitle_dataClassStatus}"/>
+                        <h:outputText value="#{bundle.ViewDataClassLabel_dataClassUpdateDatetime}"/>
+                        <h:outputText value="#{dataClassController.selected.dataClassUpdateDatetime}" title="#{bundle.ViewDataClassTitle_dataClassUpdateDatetime}"/>
+                        <h:outputText value="#{bundle.ViewDataClassLabel_dataClassUsedFor}"/>
+                        <h:outputText value="#{dataClassController.selected.dataClassUsedFor}" title="#{bundle.ViewDataClassTitle_dataClassUsedFor}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DataClassViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

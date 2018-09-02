@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocumentCreateDlg" widgetVar="DocumentCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDocumentTitle}">
+            <h:form id="DocumentCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{documentController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDocumentLabel_documentID}" for="documentID" />
+                        <p:inputText id="documentID" value="#{documentController.selected.documentID}" title="#{bundle.CreateDocumentTitle_documentID}" required="true" requiredMessage="#{bundle.CreateDocumentRequiredMessage_documentID}"/>
+                        <p:outputLabel value="#{bundle.CreateDocumentLabel_documentAlias}" for="documentAlias" />
+                        <p:inputText id="documentAlias" value="#{documentController.selected.documentAlias}" title="#{bundle.CreateDocumentTitle_documentAlias}" />
+                        <p:outputLabel value="#{bundle.CreateDocumentLabel_documentCreatedBy}" for="documentCreatedBy" />
+                        <p:inputText id="documentCreatedBy" value="#{documentController.selected.documentCreatedBy}" title="#{bundle.CreateDocumentTitle_documentCreatedBy}" required="true" requiredMessage="#{bundle.CreateDocumentRequiredMessage_documentCreatedBy}"/>
+                        <p:outputLabel value="#{bundle.CreateDocumentLabel_documentCreateDatetime}" for="documentCreateDatetime" />
+                        <p:inputText id="documentCreateDatetime" value="#{documentController.selected.documentCreateDatetime}" title="#{bundle.CreateDocumentTitle_documentCreateDatetime}" required="true" requiredMessage="#{bundle.CreateDocumentRequiredMessage_documentCreateDatetime}"/>
+                        <p:outputLabel value="#{bundle.CreateDocumentLabel_documentExtension}" for="documentExtension" />
+                        <p:inputText id="documentExtension" value="#{documentController.selected.documentExtension}" title="#{bundle.CreateDocumentTitle_documentExtension}" required="true" requiredMessage="#{bundle.CreateDocumentRequiredMessage_documentExtension}"/>
+                        <p:outputLabel value="#{bundle.CreateDocumentLabel_documentName}" for="documentName" />
+                        <p:inputText id="documentName" value="#{documentController.selected.documentName}" title="#{bundle.CreateDocumentTitle_documentName}" required="true" requiredMessage="#{bundle.CreateDocumentRequiredMessage_documentName}"/>
+                        <p:outputLabel value="#{bundle.CreateDocumentLabel_documentNameAr}" for="documentNameAr" />
+                        <p:inputText id="documentNameAr" value="#{documentController.selected.documentNameAr}" title="#{bundle.CreateDocumentTitle_documentNameAr}" />
+                        <p:outputLabel value="#{bundle.CreateDocumentLabel_documentOrder}" for="documentOrder" />
+                        <p:inputText id="documentOrder" value="#{documentController.selected.documentOrder}" title="#{bundle.CreateDocumentTitle_documentOrder}" />
+                        <p:outputLabel value="#{bundle.CreateDocumentLabel_documentPages}" for="documentPages" />
+                        <p:inputText id="documentPages" value="#{documentController.selected.documentPages}" title="#{bundle.CreateDocumentTitle_documentPages}" />
+                        <p:outputLabel value="#{bundle.CreateDocumentLabel_documentStatus}" for="documentStatus" />
+                        <p:inputText id="documentStatus" value="#{documentController.selected.documentStatus}" title="#{bundle.CreateDocumentTitle_documentStatus}" />
+                        <p:outputLabel value="#{bundle.CreateDocumentLabel_documentUpdateDatetime}" for="documentUpdateDatetime" />
+                        <p:inputText id="documentUpdateDatetime" value="#{documentController.selected.documentUpdateDatetime}" title="#{bundle.CreateDocumentTitle_documentUpdateDatetime}" />
+                        <p:outputLabel value="#{bundle.CreateDocumentLabel_folder}" for="folder" />
+                        <p:selectOneMenu id="folder" value="#{documentController.selected.folder}" >
+                            <f:selectItems value="#{folderController.itemsAvailableSelectOne}"
+                                           var="folderItem"
+                                           itemValue="#{folderItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateDocumentLabel_batch}" for="batch" />
+                        <p:selectOneMenu id="batch" value="#{documentController.selected.batch}" >
+                            <f:selectItems value="#{batchController.itemsAvailableSelectOne}"
+                                           var="batchItem"
+                                           itemValue="#{batchItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{documentController.create}" value="#{bundle.Save}" update="display,:DocumentListForm:datalist,:growl" oncomplete="handleSubmit(args,'DocumentCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DocumentCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FolderCreateDlg" widgetVar="FolderCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateFolderTitle}">
+            <h:form id="FolderCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{folderController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateFolderLabel_folderID}" for="folderID" />
+                        <p:inputText id="folderID" value="#{folderController.selected.folderID}" title="#{bundle.CreateFolderTitle_folderID}" required="true" requiredMessage="#{bundle.CreateFolderRequiredMessage_folderID}"/>
+                        <p:outputLabel value="#{bundle.CreateFolderLabel_folderAlias}" for="folderAlias" />
+                        <p:inputText id="folderAlias" value="#{folderController.selected.folderAlias}" title="#{bundle.CreateFolderTitle_folderAlias}" />
+                        <p:outputLabel value="#{bundle.CreateFolderLabel_folderCreatedBy}" for="folderCreatedBy" />
+                        <p:inputText id="folderCreatedBy" value="#{folderController.selected.folderCreatedBy}" title="#{bundle.CreateFolderTitle_folderCreatedBy}" required="true" requiredMessage="#{bundle.CreateFolderRequiredMessage_folderCreatedBy}"/>
+                        <p:outputLabel value="#{bundle.CreateFolderLabel_folderCreateDatetime}" for="folderCreateDatetime" />
+                        <p:inputText id="folderCreateDatetime" value="#{folderController.selected.folderCreateDatetime}" title="#{bundle.CreateFolderTitle_folderCreateDatetime}" required="true" requiredMessage="#{bundle.CreateFolderRequiredMessage_folderCreateDatetime}"/>
+                        <p:outputLabel value="#{bundle.CreateFolderLabel_folderIndex}" for="folderIndex" />
+                        <p:inputText id="folderIndex" value="#{folderController.selected.folderIndex}" title="#{bundle.CreateFolderTitle_folderIndex}" />
+                        <p:outputLabel value="#{bundle.CreateFolderLabel_folderName}" for="folderName" />
+                        <p:inputText id="folderName" value="#{folderController.selected.folderName}" title="#{bundle.CreateFolderTitle_folderName}" required="true" requiredMessage="#{bundle.CreateFolderRequiredMessage_folderName}"/>
+                        <p:outputLabel value="#{bundle.CreateFolderLabel_folderNameAr}" for="folderNameAr" />
+                        <p:inputText id="folderNameAr" value="#{folderController.selected.folderNameAr}" title="#{bundle.CreateFolderTitle_folderNameAr}" />
+                        <p:outputLabel value="#{bundle.CreateFolderLabel_folderParentIndex}" for="folderParentIndex" />
+                        <p:inputText id="folderParentIndex" value="#{folderController.selected.folderParentIndex}" title="#{bundle.CreateFolderTitle_folderParentIndex}" />
+                        <p:outputLabel value="#{bundle.CreateFolderLabel_folderUpdateDatetime}" for="folderUpdateDatetime" />
+                        <p:inputText id="folderUpdateDatetime" value="#{folderController.selected.folderUpdateDatetime}" title="#{bundle.CreateFolderTitle_folderUpdateDatetime}" />
+                        <p:outputLabel value="#{bundle.CreateFolderLabel_dataClass}" for="dataClass" />
+                        <p:selectOneMenu id="dataClass" value="#{folderController.selected.dataClass}" >
+                            <f:selectItems value="#{dataClassController.itemsAvailableSelectOne}"
+                                           var="dataClassItem"
+                                           itemValue="#{dataClassItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{folderController.create}" value="#{bundle.Save}" update="display,:FolderListForm:datalist,:growl" oncomplete="handleSubmit(args,'FolderCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FolderCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

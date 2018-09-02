@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LogComponentEditDlg" widgetVar="LogComponentEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditLogComponentTitle}">
+            <h:form id="LogComponentEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{logComponentController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditLogComponentLabel_logComponentID}" for="logComponentID" />
+                        <p:inputText id="logComponentID" value="#{logComponentController.selected.logComponentID}" title="#{bundle.EditLogComponentTitle_logComponentID}" required="true" requiredMessage="#{bundle.EditLogComponentRequiredMessage_logComponentID}"/>
+                        <p:outputLabel value="#{bundle.EditLogComponentLabel_fieldName}" for="fieldName" />
+                        <p:inputText id="fieldName" value="#{logComponentController.selected.fieldName}" title="#{bundle.EditLogComponentTitle_fieldName}" required="true" requiredMessage="#{bundle.EditLogComponentRequiredMessage_fieldName}"/>
+                        <p:outputLabel value="#{bundle.EditLogComponentLabel_newValue}" for="newValue" />
+                        <p:inputText id="newValue" value="#{logComponentController.selected.newValue}" title="#{bundle.EditLogComponentTitle_newValue}" required="true" requiredMessage="#{bundle.EditLogComponentRequiredMessage_newValue}"/>
+                        <p:outputLabel value="#{bundle.EditLogComponentLabel_oldValue}" for="oldValue" />
+                        <p:inputText id="oldValue" value="#{logComponentController.selected.oldValue}" title="#{bundle.EditLogComponentTitle_oldValue}" required="true" requiredMessage="#{bundle.EditLogComponentRequiredMessage_oldValue}"/>
+                        <p:outputLabel value="#{bundle.EditLogComponentLabel_recordID}" for="recordID" />
+                        <p:inputText id="recordID" value="#{logComponentController.selected.recordID}" title="#{bundle.EditLogComponentTitle_recordID}" required="true" requiredMessage="#{bundle.EditLogComponentRequiredMessage_recordID}"/>
+                        <p:outputLabel value="#{bundle.EditLogComponentLabel_tableName}" for="tableName" />
+                        <p:inputText id="tableName" value="#{logComponentController.selected.tableName}" title="#{bundle.EditLogComponentTitle_tableName}" required="true" requiredMessage="#{bundle.EditLogComponentRequiredMessage_tableName}"/>
+                        <p:outputLabel value="#{bundle.EditLogComponentLabel_log}" for="log" />
+                        <p:selectOneMenu id="log" value="#{logComponentController.selected.log}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{logController.itemsAvailableSelectOne}"
+                                           var="logItem"
+                                           itemValue="#{logItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{logComponentController.update}" value="#{bundle.Save}" update="display,:LogComponentListForm:datalist,:growl" oncomplete="handleSubmit(args, 'LogComponentEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LogComponentEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

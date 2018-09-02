@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LogMailCreateDlg" widgetVar="LogMailCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateLogMailTitle}">
+            <h:form id="LogMailCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{logMailController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateLogMailLabel_logMailID}" for="logMailID" />
+                        <p:inputText id="logMailID" value="#{logMailController.selected.logMailID}" title="#{bundle.CreateLogMailTitle_logMailID}" required="true" requiredMessage="#{bundle.CreateLogMailRequiredMessage_logMailID}"/>
+                        <p:outputLabel value="#{bundle.CreateLogMailLabel_logMailAttachCount}" for="logMailAttachCount" />
+                        <p:inputText id="logMailAttachCount" value="#{logMailController.selected.logMailAttachCount}" title="#{bundle.CreateLogMailTitle_logMailAttachCount}" />
+                        <p:outputLabel value="#{bundle.CreateLogMailLabel_logMailAttachNames}" for="logMailAttachNames" />
+                        <p:inputText id="logMailAttachNames" value="#{logMailController.selected.logMailAttachNames}" title="#{bundle.CreateLogMailTitle_logMailAttachNames}" />
+                        <p:outputLabel value="#{bundle.CreateLogMailLabel_logMailBody}" for="logMailBody" />
+                        <p:inputText id="logMailBody" value="#{logMailController.selected.logMailBody}" title="#{bundle.CreateLogMailTitle_logMailBody}" />
+                        <p:outputLabel value="#{bundle.CreateLogMailLabel_logMailCC}" for="logMailCC" />
+                        <p:inputText id="logMailCC" value="#{logMailController.selected.logMailCC}" title="#{bundle.CreateLogMailTitle_logMailCC}" />
+                        <p:outputLabel value="#{bundle.CreateLogMailLabel_logMailSender}" for="logMailSender" />
+                        <p:inputText id="logMailSender" value="#{logMailController.selected.logMailSender}" title="#{bundle.CreateLogMailTitle_logMailSender}" required="true" requiredMessage="#{bundle.CreateLogMailRequiredMessage_logMailSender}"/>
+                        <p:outputLabel value="#{bundle.CreateLogMailLabel_logMailSubject}" for="logMailSubject" />
+                        <p:inputText id="logMailSubject" value="#{logMailController.selected.logMailSubject}" title="#{bundle.CreateLogMailTitle_logMailSubject}" required="true" requiredMessage="#{bundle.CreateLogMailRequiredMessage_logMailSubject}"/>
+                        <p:outputLabel value="#{bundle.CreateLogMailLabel_logMailTo}" for="logMailTo" />
+                        <p:inputText id="logMailTo" value="#{logMailController.selected.logMailTo}" title="#{bundle.CreateLogMailTitle_logMailTo}" required="true" requiredMessage="#{bundle.CreateLogMailRequiredMessage_logMailTo}"/>
+                        <p:outputLabel value="#{bundle.CreateLogMailLabel_log}" for="log" />
+                        <p:selectOneMenu id="log" value="#{logMailController.selected.log}" >
+                            <f:selectItems value="#{logController.itemsAvailableSelectOne}"
+                                           var="logItem"
+                                           itemValue="#{logItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{logMailController.create}" value="#{bundle.Save}" update="display,:LogMailListForm:datalist,:growl" oncomplete="handleSubmit(args,'LogMailCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LogMailCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LogViewDlg" widgetVar="LogViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewLogTitle}">
+            <h:form id="LogViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{logController.selected != null}">
+                        <h:outputText value="#{bundle.ViewLogLabel_logID}"/>
+                        <h:outputText value="#{logController.selected.logID}" title="#{bundle.ViewLogTitle_logID}"/>
+                        <h:outputText value="#{bundle.ViewLogLabel_logAlias}"/>
+                        <h:outputText value="#{logController.selected.logAlias}" title="#{bundle.ViewLogTitle_logAlias}"/>
+                        <h:outputText value="#{bundle.ViewLogLabel_logDatetime}"/>
+                        <h:outputText value="#{logController.selected.logDatetime}" title="#{bundle.ViewLogTitle_logDatetime}"/>
+                        <h:outputText value="#{bundle.ViewLogLabel_action}"/>
+                        <h:outputText value="#{logController.selected.action}" title="#{bundle.ViewLogTitle_action}"/>
+                        <h:outputText value="#{bundle.ViewLogLabel_user}"/>
+                        <h:outputText value="#{logController.selected.user}" title="#{bundle.ViewLogTitle_user}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="LogViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

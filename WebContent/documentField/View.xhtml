@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocumentFieldViewDlg" widgetVar="DocumentFieldViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDocumentFieldTitle}">
+            <h:form id="DocumentFieldViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{documentFieldController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDocumentFieldLabel_sourceID}"/>
+                        <h:outputText value="#{documentFieldController.selected.sourceID}" title="#{bundle.ViewDocumentFieldTitle_sourceID}"/>
+                        <h:outputText value="#{bundle.ViewDocumentFieldLabel_dataClassField1}"/>
+                        <h:outputText value="#{documentFieldController.selected.dataClassField1}" title="#{bundle.ViewDocumentFieldTitle_dataClassField1}"/>
+                        <h:outputText value="#{bundle.ViewDocumentFieldLabel_dataClassField2}"/>
+                        <h:outputText value="#{documentFieldController.selected.dataClassField2}" title="#{bundle.ViewDocumentFieldTitle_dataClassField2}"/>
+                        <h:outputText value="#{bundle.ViewDocumentFieldLabel_dataClassField3}"/>
+                        <h:outputText value="#{documentFieldController.selected.dataClassField3}" title="#{bundle.ViewDocumentFieldTitle_dataClassField3}"/>
+                        <h:outputText value="#{bundle.ViewDocumentFieldLabel_dataClassField4}"/>
+                        <h:outputText value="#{documentFieldController.selected.dataClassField4}" title="#{bundle.ViewDocumentFieldTitle_dataClassField4}"/>
+                        <h:outputText value="#{bundle.ViewDocumentFieldLabel_dataClassField5}"/>
+                        <h:outputText value="#{documentFieldController.selected.dataClassField5}" title="#{bundle.ViewDocumentFieldTitle_dataClassField5}"/>
+                        <h:outputText value="#{bundle.ViewDocumentFieldLabel_dataClassField6}"/>
+                        <h:outputText value="#{documentFieldController.selected.dataClassField6}" title="#{bundle.ViewDocumentFieldTitle_dataClassField6}"/>
+                        <h:outputText value="#{bundle.ViewDocumentFieldLabel_dataClassField7}"/>
+                        <h:outputText value="#{documentFieldController.selected.dataClassField7}" title="#{bundle.ViewDocumentFieldTitle_dataClassField7}"/>
+                        <h:outputText value="#{bundle.ViewDocumentFieldLabel_dataClass}"/>
+                        <h:outputText value="#{documentFieldController.selected.dataClass}" title="#{bundle.ViewDocumentFieldTitle_dataClass}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DocumentFieldViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

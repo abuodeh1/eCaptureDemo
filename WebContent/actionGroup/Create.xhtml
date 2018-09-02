@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ActionGroupCreateDlg" widgetVar="ActionGroupCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateActionGroupTitle}">
+            <h:form id="ActionGroupCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{actionGroupController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateActionGroupLabel_actionGroupID}" for="actionGroupID" />
+                        <p:inputText id="actionGroupID" value="#{actionGroupController.selected.actionGroupID}" title="#{bundle.CreateActionGroupTitle_actionGroupID}" required="true" requiredMessage="#{bundle.CreateActionGroupRequiredMessage_actionGroupID}"/>
+                        <p:outputLabel value="#{bundle.CreateActionGroupLabel_actionGroupDesc}" for="actionGroupDesc" />
+                        <p:inputText id="actionGroupDesc" value="#{actionGroupController.selected.actionGroupDesc}" title="#{bundle.CreateActionGroupTitle_actionGroupDesc}" />
+                        <p:outputLabel value="#{bundle.CreateActionGroupLabel_actionGroupName}" for="actionGroupName" />
+                        <p:inputText id="actionGroupName" value="#{actionGroupController.selected.actionGroupName}" title="#{bundle.CreateActionGroupTitle_actionGroupName}" required="true" requiredMessage="#{bundle.CreateActionGroupRequiredMessage_actionGroupName}"/>
+                        <p:outputLabel value="#{bundle.CreateActionGroupLabel_actionGroupNameAr}" for="actionGroupNameAr" />
+                        <p:inputText id="actionGroupNameAr" value="#{actionGroupController.selected.actionGroupNameAr}" title="#{bundle.CreateActionGroupTitle_actionGroupNameAr}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{actionGroupController.create}" value="#{bundle.Save}" update="display,:ActionGroupListForm:datalist,:growl" oncomplete="handleSubmit(args,'ActionGroupCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ActionGroupCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

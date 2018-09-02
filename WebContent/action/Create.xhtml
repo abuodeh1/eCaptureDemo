@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ActionCreateDlg" widgetVar="ActionCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateActionTitle}">
+            <h:form id="ActionCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{actionController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateActionLabel_actionID}" for="actionID" />
+                        <p:inputText id="actionID" value="#{actionController.selected.actionID}" title="#{bundle.CreateActionTitle_actionID}" required="true" requiredMessage="#{bundle.CreateActionRequiredMessage_actionID}"/>
+                        <p:outputLabel value="#{bundle.CreateActionLabel_actionAlias}" for="actionAlias" />
+                        <p:inputText id="actionAlias" value="#{actionController.selected.actionAlias}" title="#{bundle.CreateActionTitle_actionAlias}" />
+                        <p:outputLabel value="#{bundle.CreateActionLabel_actionDesc}" for="actionDesc" />
+                        <p:inputText id="actionDesc" value="#{actionController.selected.actionDesc}" title="#{bundle.CreateActionTitle_actionDesc}" />
+                        <p:outputLabel value="#{bundle.CreateActionLabel_actionName}" for="actionName" />
+                        <p:inputText id="actionName" value="#{actionController.selected.actionName}" title="#{bundle.CreateActionTitle_actionName}" required="true" requiredMessage="#{bundle.CreateActionRequiredMessage_actionName}"/>
+                        <p:outputLabel value="#{bundle.CreateActionLabel_actionNameAr}" for="actionNameAr" />
+                        <p:inputText id="actionNameAr" value="#{actionController.selected.actionNameAr}" title="#{bundle.CreateActionTitle_actionNameAr}" />
+                        <p:outputLabel value="#{bundle.CreateActionLabel_actionGroup}" for="actionGroup" />
+                        <p:selectOneMenu id="actionGroup" value="#{actionController.selected.actionGroup}" >
+                            <f:selectItems value="#{actionGroupController.itemsAvailableSelectOne}"
+                                           var="actionGroupItem"
+                                           itemValue="#{actionGroupItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{actionController.create}" value="#{bundle.Save}" update="display,:ActionListForm:datalist,:growl" oncomplete="handleSubmit(args,'ActionCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="ActionCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

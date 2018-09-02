@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LookupViewDlg" widgetVar="LookupViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewLookupTitle}">
+            <h:form id="LookupViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{lookupController.selected != null}">
+                        <h:outputText value="#{bundle.ViewLookupLabel_lookupID}"/>
+                        <h:outputText value="#{lookupController.selected.lookupID}" title="#{bundle.ViewLookupTitle_lookupID}"/>
+                        <h:outputText value="#{bundle.ViewLookupLabel_lookupDefault}"/>
+                        <h:outputText value="#{lookupController.selected.lookupDefault}" title="#{bundle.ViewLookupTitle_lookupDefault}"/>
+                        <h:outputText value="#{bundle.ViewLookupLabel_lookupDesc}"/>
+                        <h:outputText value="#{lookupController.selected.lookupDesc}" title="#{bundle.ViewLookupTitle_lookupDesc}"/>
+                        <h:outputText value="#{bundle.ViewLookupLabel_lookupDescAr}"/>
+                        <h:outputText value="#{lookupController.selected.lookupDescAr}" title="#{bundle.ViewLookupTitle_lookupDescAr}"/>
+                        <h:outputText value="#{bundle.ViewLookupLabel_lookupName}"/>
+                        <h:outputText value="#{lookupController.selected.lookupName}" title="#{bundle.ViewLookupTitle_lookupName}"/>
+                        <h:outputText value="#{bundle.ViewLookupLabel_lookupNameAr}"/>
+                        <h:outputText value="#{lookupController.selected.lookupNameAr}" title="#{bundle.ViewLookupTitle_lookupNameAr}"/>
+                        <h:outputText value="#{bundle.ViewLookupLabel_lookupOrder}"/>
+                        <h:outputText value="#{lookupController.selected.lookupOrder}" title="#{bundle.ViewLookupTitle_lookupOrder}"/>
+                        <h:outputText value="#{bundle.ViewLookupLabel_lookupParentID}"/>
+                        <h:outputText value="#{lookupController.selected.lookupParentID}" title="#{bundle.ViewLookupTitle_lookupParentID}"/>
+                        <h:outputText value="#{bundle.ViewLookupLabel_lookupStatus}"/>
+                        <h:outputText value="#{lookupController.selected.lookupStatus}" title="#{bundle.ViewLookupTitle_lookupStatus}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="LookupViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

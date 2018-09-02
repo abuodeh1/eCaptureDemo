@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UserCreateDlg" widgetVar="UserCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateUserTitle}">
+            <h:form id="UserCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{userController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateUserLabel_userID}" for="userID" />
+                        <p:inputText id="userID" value="#{userController.selected.userID}" title="#{bundle.CreateUserTitle_userID}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_userID}"/>
+                        <p:outputLabel value="#{bundle.CreateUserLabel_userActingAs}" for="userActingAs" />
+                        <p:inputText id="userActingAs" value="#{userController.selected.userActingAs}" title="#{bundle.CreateUserTitle_userActingAs}" />
+                        <p:outputLabel value="#{bundle.CreateUserLabel_userEmail}" for="userEmail" />
+                        <p:inputText id="userEmail" value="#{userController.selected.userEmail}" title="#{bundle.CreateUserTitle_userEmail}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_userEmail}"/>
+                        <p:outputLabel value="#{bundle.CreateUserLabel_userExpiryDate}" for="userExpiryDate" />
+                        <p:inputText id="userExpiryDate" value="#{userController.selected.userExpiryDate}" title="#{bundle.CreateUserTitle_userExpiryDate}" />
+                        <p:outputLabel value="#{bundle.CreateUserLabel_userFailedLoginCount}" for="userFailedLoginCount" />
+                        <p:inputText id="userFailedLoginCount" value="#{userController.selected.userFailedLoginCount}" title="#{bundle.CreateUserTitle_userFailedLoginCount}" />
+                        <p:outputLabel value="#{bundle.CreateUserLabel_userFName}" for="userFName" />
+                        <p:inputText id="userFName" value="#{userController.selected.userFName}" title="#{bundle.CreateUserTitle_userFName}" />
+                        <p:outputLabel value="#{bundle.CreateUserLabel_userFNameAr}" for="userFNameAr" />
+                        <p:inputText id="userFNameAr" value="#{userController.selected.userFNameAr}" title="#{bundle.CreateUserTitle_userFNameAr}" />
+                        <p:outputLabel value="#{bundle.CreateUserLabel_userIsLocked}" for="userIsLocked" />
+                        <p:inputText id="userIsLocked" value="#{userController.selected.userIsLocked}" title="#{bundle.CreateUserTitle_userIsLocked}" />
+                        <p:outputLabel value="#{bundle.CreateUserLabel_userLName}" for="userLName" />
+                        <p:inputText id="userLName" value="#{userController.selected.userLName}" title="#{bundle.CreateUserTitle_userLName}" />
+                        <p:outputLabel value="#{bundle.CreateUserLabel_userLNameAr}" for="userLNameAr" />
+                        <p:inputText id="userLNameAr" value="#{userController.selected.userLNameAr}" title="#{bundle.CreateUserTitle_userLNameAr}" />
+                        <p:outputLabel value="#{bundle.CreateUserLabel_userPassword}" for="userPassword" />
+                        <p:inputText id="userPassword" value="#{userController.selected.userPassword}" title="#{bundle.CreateUserTitle_userPassword}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_userPassword}"/>
+                        <p:outputLabel value="#{bundle.CreateUserLabel_userStatus}" for="userStatus" />
+                        <p:inputText id="userStatus" value="#{userController.selected.userStatus}" title="#{bundle.CreateUserTitle_userStatus}" />
+                        <p:outputLabel value="#{bundle.CreateUserLabel_userUnlockDatetime}" for="userUnlockDatetime" />
+                        <p:inputText id="userUnlockDatetime" value="#{userController.selected.userUnlockDatetime}" title="#{bundle.CreateUserTitle_userUnlockDatetime}" />
+                        <p:outputLabel value="#{bundle.CreateUserLabel_userUserID}" for="userUserID" />
+                        <p:inputText id="userUserID" value="#{userController.selected.userUserID}" title="#{bundle.CreateUserTitle_userUserID}" required="true" requiredMessage="#{bundle.CreateUserRequiredMessage_userUserID}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{userController.create}" value="#{bundle.Save}" update="display,:UserListForm:datalist,:growl" oncomplete="handleSubmit(args,'UserCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="UserCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

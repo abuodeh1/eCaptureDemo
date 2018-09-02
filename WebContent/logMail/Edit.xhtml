@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LogMailEditDlg" widgetVar="LogMailEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditLogMailTitle}">
+            <h:form id="LogMailEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{logMailController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditLogMailLabel_logMailID}" for="logMailID" />
+                        <p:inputText id="logMailID" value="#{logMailController.selected.logMailID}" title="#{bundle.EditLogMailTitle_logMailID}" required="true" requiredMessage="#{bundle.EditLogMailRequiredMessage_logMailID}"/>
+                        <p:outputLabel value="#{bundle.EditLogMailLabel_logMailAttachCount}" for="logMailAttachCount" />
+                        <p:inputText id="logMailAttachCount" value="#{logMailController.selected.logMailAttachCount}" title="#{bundle.EditLogMailTitle_logMailAttachCount}" />
+                        <p:outputLabel value="#{bundle.EditLogMailLabel_logMailAttachNames}" for="logMailAttachNames" />
+                        <p:inputText id="logMailAttachNames" value="#{logMailController.selected.logMailAttachNames}" title="#{bundle.EditLogMailTitle_logMailAttachNames}" />
+                        <p:outputLabel value="#{bundle.EditLogMailLabel_logMailBody}" for="logMailBody" />
+                        <p:inputText id="logMailBody" value="#{logMailController.selected.logMailBody}" title="#{bundle.EditLogMailTitle_logMailBody}" />
+                        <p:outputLabel value="#{bundle.EditLogMailLabel_logMailCC}" for="logMailCC" />
+                        <p:inputText id="logMailCC" value="#{logMailController.selected.logMailCC}" title="#{bundle.EditLogMailTitle_logMailCC}" />
+                        <p:outputLabel value="#{bundle.EditLogMailLabel_logMailSender}" for="logMailSender" />
+                        <p:inputText id="logMailSender" value="#{logMailController.selected.logMailSender}" title="#{bundle.EditLogMailTitle_logMailSender}" required="true" requiredMessage="#{bundle.EditLogMailRequiredMessage_logMailSender}"/>
+                        <p:outputLabel value="#{bundle.EditLogMailLabel_logMailSubject}" for="logMailSubject" />
+                        <p:inputText id="logMailSubject" value="#{logMailController.selected.logMailSubject}" title="#{bundle.EditLogMailTitle_logMailSubject}" required="true" requiredMessage="#{bundle.EditLogMailRequiredMessage_logMailSubject}"/>
+                        <p:outputLabel value="#{bundle.EditLogMailLabel_logMailTo}" for="logMailTo" />
+                        <p:inputText id="logMailTo" value="#{logMailController.selected.logMailTo}" title="#{bundle.EditLogMailTitle_logMailTo}" required="true" requiredMessage="#{bundle.EditLogMailRequiredMessage_logMailTo}"/>
+                        <p:outputLabel value="#{bundle.EditLogMailLabel_log}" for="log" />
+                        <p:selectOneMenu id="log" value="#{logMailController.selected.log}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{logController.itemsAvailableSelectOne}"
+                                           var="logItem"
+                                           itemValue="#{logItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{logMailController.update}" value="#{bundle.Save}" update="display,:LogMailListForm:datalist,:growl" oncomplete="handleSubmit(args, 'LogMailEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LogMailEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FieldViewDlg" widgetVar="FieldViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFieldTitle}">
+            <h:form id="FieldViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fieldController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFieldLabel_fieldID}"/>
+                        <h:outputText value="#{fieldController.selected.fieldID}" title="#{bundle.ViewFieldTitle_fieldID}"/>
+                        <h:outputText value="#{bundle.ViewFieldLabel_fieldAlias}"/>
+                        <h:outputText value="#{fieldController.selected.fieldAlias}" title="#{bundle.ViewFieldTitle_fieldAlias}"/>
+                        <h:outputText value="#{bundle.ViewFieldLabel_fieldDefaultValue}"/>
+                        <h:outputText value="#{fieldController.selected.fieldDefaultValue}" title="#{bundle.ViewFieldTitle_fieldDefaultValue}"/>
+                        <h:outputText value="#{bundle.ViewFieldLabel_fieldIndex}"/>
+                        <h:outputText value="#{fieldController.selected.fieldIndex}" title="#{bundle.ViewFieldTitle_fieldIndex}"/>
+                        <h:outputText value="#{bundle.ViewFieldLabel_fieldLookupID}"/>
+                        <h:outputText value="#{fieldController.selected.fieldLookupID}" title="#{bundle.ViewFieldTitle_fieldLookupID}"/>
+                        <h:outputText value="#{bundle.ViewFieldLabel_fieldName}"/>
+                        <h:outputText value="#{fieldController.selected.fieldName}" title="#{bundle.ViewFieldTitle_fieldName}"/>
+                        <h:outputText value="#{bundle.ViewFieldLabel_fieldNameAr}"/>
+                        <h:outputText value="#{fieldController.selected.fieldNameAr}" title="#{bundle.ViewFieldTitle_fieldNameAr}"/>
+                        <h:outputText value="#{bundle.ViewFieldLabel_fieldOrder}"/>
+                        <h:outputText value="#{fieldController.selected.fieldOrder}" title="#{bundle.ViewFieldTitle_fieldOrder}"/>
+                        <h:outputText value="#{bundle.ViewFieldLabel_fieldSize}"/>
+                        <h:outputText value="#{fieldController.selected.fieldSize}" title="#{bundle.ViewFieldTitle_fieldSize}"/>
+                        <h:outputText value="#{bundle.ViewFieldLabel_fieldStatus}"/>
+                        <h:outputText value="#{fieldController.selected.fieldStatus}" title="#{bundle.ViewFieldTitle_fieldStatus}"/>
+                        <h:outputText value="#{bundle.ViewFieldLabel_fieldTextlines}"/>
+                        <h:outputText value="#{fieldController.selected.fieldTextlines}" title="#{bundle.ViewFieldTitle_fieldTextlines}"/>
+                        <h:outputText value="#{bundle.ViewFieldLabel_fieldTooltip}"/>
+                        <h:outputText value="#{fieldController.selected.fieldTooltip}" title="#{bundle.ViewFieldTitle_fieldTooltip}"/>
+                        <h:outputText value="#{bundle.ViewFieldLabel_fieldTooltipAr}"/>
+                        <h:outputText value="#{fieldController.selected.fieldTooltipAr}" title="#{bundle.ViewFieldTitle_fieldTooltipAr}"/>
+                        <h:outputText value="#{bundle.ViewFieldLabel_fieldType}"/>
+                        <h:outputText value="#{fieldController.selected.fieldType}" title="#{bundle.ViewFieldTitle_fieldType}"/>
+                        <h:outputText value="#{bundle.ViewFieldLabel_dataClass}"/>
+                        <h:outputText value="#{fieldController.selected.dataClass}" title="#{bundle.ViewFieldTitle_dataClass}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FieldViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

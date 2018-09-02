@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDocumentFieldTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="DocumentFieldListForm">
+                <p:panel header="#{bundle.ListDocumentFieldTitle}">
+                    <p:dataTable id="datalist" value="#{documentFieldController.items}" var="item"
+                                 selectionMode="single" selection="#{documentFieldController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.sourceID}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentFieldTitle_sourceID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sourceID}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentFieldTitle_dataClassField1}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassField1}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentFieldTitle_dataClassField2}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassField2}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentFieldTitle_dataClassField3}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassField3}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentFieldTitle_dataClassField4}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassField4}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentFieldTitle_dataClassField5}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassField5}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentFieldTitle_dataClassField6}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassField6}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentFieldTitle_dataClassField7}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassField7}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDocumentFieldTitle_dataClass}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClass}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{documentFieldController.prepareCreate}" update=":DocumentFieldCreateForm" oncomplete="PF('DocumentFieldCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":DocumentFieldViewForm" oncomplete="PF('DocumentFieldViewDialog').show()" disabled="#{empty documentFieldController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":DocumentFieldEditForm" oncomplete="PF('DocumentFieldEditDialog').show()" disabled="#{empty documentFieldController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{documentFieldController.destroy}" update=":growl,datalist" disabled="#{empty documentFieldController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

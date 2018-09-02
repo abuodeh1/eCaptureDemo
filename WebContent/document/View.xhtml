@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocumentViewDlg" widgetVar="DocumentViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewDocumentTitle}">
+            <h:form id="DocumentViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{documentController.selected != null}">
+                        <h:outputText value="#{bundle.ViewDocumentLabel_documentID}"/>
+                        <h:outputText value="#{documentController.selected.documentID}" title="#{bundle.ViewDocumentTitle_documentID}"/>
+                        <h:outputText value="#{bundle.ViewDocumentLabel_documentAlias}"/>
+                        <h:outputText value="#{documentController.selected.documentAlias}" title="#{bundle.ViewDocumentTitle_documentAlias}"/>
+                        <h:outputText value="#{bundle.ViewDocumentLabel_documentCreatedBy}"/>
+                        <h:outputText value="#{documentController.selected.documentCreatedBy}" title="#{bundle.ViewDocumentTitle_documentCreatedBy}"/>
+                        <h:outputText value="#{bundle.ViewDocumentLabel_documentCreateDatetime}"/>
+                        <h:outputText value="#{documentController.selected.documentCreateDatetime}" title="#{bundle.ViewDocumentTitle_documentCreateDatetime}"/>
+                        <h:outputText value="#{bundle.ViewDocumentLabel_documentExtension}"/>
+                        <h:outputText value="#{documentController.selected.documentExtension}" title="#{bundle.ViewDocumentTitle_documentExtension}"/>
+                        <h:outputText value="#{bundle.ViewDocumentLabel_documentName}"/>
+                        <h:outputText value="#{documentController.selected.documentName}" title="#{bundle.ViewDocumentTitle_documentName}"/>
+                        <h:outputText value="#{bundle.ViewDocumentLabel_documentNameAr}"/>
+                        <h:outputText value="#{documentController.selected.documentNameAr}" title="#{bundle.ViewDocumentTitle_documentNameAr}"/>
+                        <h:outputText value="#{bundle.ViewDocumentLabel_documentOrder}"/>
+                        <h:outputText value="#{documentController.selected.documentOrder}" title="#{bundle.ViewDocumentTitle_documentOrder}"/>
+                        <h:outputText value="#{bundle.ViewDocumentLabel_documentPages}"/>
+                        <h:outputText value="#{documentController.selected.documentPages}" title="#{bundle.ViewDocumentTitle_documentPages}"/>
+                        <h:outputText value="#{bundle.ViewDocumentLabel_documentStatus}"/>
+                        <h:outputText value="#{documentController.selected.documentStatus}" title="#{bundle.ViewDocumentTitle_documentStatus}"/>
+                        <h:outputText value="#{bundle.ViewDocumentLabel_documentUpdateDatetime}"/>
+                        <h:outputText value="#{documentController.selected.documentUpdateDatetime}" title="#{bundle.ViewDocumentTitle_documentUpdateDatetime}"/>
+                        <h:outputText value="#{bundle.ViewDocumentLabel_folder}"/>
+                        <h:outputText value="#{documentController.selected.folder}" title="#{bundle.ViewDocumentTitle_folder}"/>
+                        <h:outputText value="#{bundle.ViewDocumentLabel_batch}"/>
+                        <h:outputText value="#{documentController.selected.batch}" title="#{bundle.ViewDocumentTitle_batch}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="DocumentViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

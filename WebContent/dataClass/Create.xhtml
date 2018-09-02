@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DataClassCreateDlg" widgetVar="DataClassCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateDataClassTitle}">
+            <h:form id="DataClassCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{dataClassController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateDataClassLabel_dataClassID}" for="dataClassID" />
+                        <p:inputText id="dataClassID" value="#{dataClassController.selected.dataClassID}" title="#{bundle.CreateDataClassTitle_dataClassID}" required="true" requiredMessage="#{bundle.CreateDataClassRequiredMessage_dataClassID}"/>
+                        <p:outputLabel value="#{bundle.CreateDataClassLabel_dataClassClonedIndex}" for="dataClassClonedIndex" />
+                        <p:inputText id="dataClassClonedIndex" value="#{dataClassController.selected.dataClassClonedIndex}" title="#{bundle.CreateDataClassTitle_dataClassClonedIndex}" />
+                        <p:outputLabel value="#{bundle.CreateDataClassLabel_dataClassCreatedBy}" for="dataClassCreatedBy" />
+                        <p:inputText id="dataClassCreatedBy" value="#{dataClassController.selected.dataClassCreatedBy}" title="#{bundle.CreateDataClassTitle_dataClassCreatedBy}" required="true" requiredMessage="#{bundle.CreateDataClassRequiredMessage_dataClassCreatedBy}"/>
+                        <p:outputLabel value="#{bundle.CreateDataClassLabel_dataClassCreateDatetime}" for="dataClassCreateDatetime" />
+                        <p:inputText id="dataClassCreateDatetime" value="#{dataClassController.selected.dataClassCreateDatetime}" title="#{bundle.CreateDataClassTitle_dataClassCreateDatetime}" required="true" requiredMessage="#{bundle.CreateDataClassRequiredMessage_dataClassCreateDatetime}"/>
+                        <p:outputLabel value="#{bundle.CreateDataClassLabel_dataClassDesc}" for="dataClassDesc" />
+                        <p:inputText id="dataClassDesc" value="#{dataClassController.selected.dataClassDesc}" title="#{bundle.CreateDataClassTitle_dataClassDesc}" />
+                        <p:outputLabel value="#{bundle.CreateDataClassLabel_dataClassFieldCount}" for="dataClassFieldCount" />
+                        <p:inputText id="dataClassFieldCount" value="#{dataClassController.selected.dataClassFieldCount}" title="#{bundle.CreateDataClassTitle_dataClassFieldCount}" required="true" requiredMessage="#{bundle.CreateDataClassRequiredMessage_dataClassFieldCount}"/>
+                        <p:outputLabel value="#{bundle.CreateDataClassLabel_dataClassIndex}" for="dataClassIndex" />
+                        <p:inputText id="dataClassIndex" value="#{dataClassController.selected.dataClassIndex}" title="#{bundle.CreateDataClassTitle_dataClassIndex}" />
+                        <p:outputLabel value="#{bundle.CreateDataClassLabel_dataClassName}" for="dataClassName" />
+                        <p:inputText id="dataClassName" value="#{dataClassController.selected.dataClassName}" title="#{bundle.CreateDataClassTitle_dataClassName}" required="true" requiredMessage="#{bundle.CreateDataClassRequiredMessage_dataClassName}"/>
+                        <p:outputLabel value="#{bundle.CreateDataClassLabel_dataClassNameAr}" for="dataClassNameAr" />
+                        <p:inputText id="dataClassNameAr" value="#{dataClassController.selected.dataClassNameAr}" title="#{bundle.CreateDataClassTitle_dataClassNameAr}" />
+                        <p:outputLabel value="#{bundle.CreateDataClassLabel_dataClassStatus}" for="dataClassStatus" />
+                        <p:inputText id="dataClassStatus" value="#{dataClassController.selected.dataClassStatus}" title="#{bundle.CreateDataClassTitle_dataClassStatus}" />
+                        <p:outputLabel value="#{bundle.CreateDataClassLabel_dataClassUpdateDatetime}" for="dataClassUpdateDatetime" />
+                        <p:inputText id="dataClassUpdateDatetime" value="#{dataClassController.selected.dataClassUpdateDatetime}" title="#{bundle.CreateDataClassTitle_dataClassUpdateDatetime}" />
+                        <p:outputLabel value="#{bundle.CreateDataClassLabel_dataClassUsedFor}" for="dataClassUsedFor" />
+                        <p:inputText id="dataClassUsedFor" value="#{dataClassController.selected.dataClassUsedFor}" title="#{bundle.CreateDataClassTitle_dataClassUsedFor}" required="true" requiredMessage="#{bundle.CreateDataClassRequiredMessage_dataClassUsedFor}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{dataClassController.create}" value="#{bundle.Save}" update="display,:DataClassListForm:datalist,:growl" oncomplete="handleSubmit(args,'DataClassCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DataClassCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

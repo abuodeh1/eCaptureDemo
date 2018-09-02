@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FolderViewDlg" widgetVar="FolderViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewFolderTitle}">
+            <h:form id="FolderViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{folderController.selected != null}">
+                        <h:outputText value="#{bundle.ViewFolderLabel_folderID}"/>
+                        <h:outputText value="#{folderController.selected.folderID}" title="#{bundle.ViewFolderTitle_folderID}"/>
+                        <h:outputText value="#{bundle.ViewFolderLabel_folderAlias}"/>
+                        <h:outputText value="#{folderController.selected.folderAlias}" title="#{bundle.ViewFolderTitle_folderAlias}"/>
+                        <h:outputText value="#{bundle.ViewFolderLabel_folderCreatedBy}"/>
+                        <h:outputText value="#{folderController.selected.folderCreatedBy}" title="#{bundle.ViewFolderTitle_folderCreatedBy}"/>
+                        <h:outputText value="#{bundle.ViewFolderLabel_folderCreateDatetime}"/>
+                        <h:outputText value="#{folderController.selected.folderCreateDatetime}" title="#{bundle.ViewFolderTitle_folderCreateDatetime}"/>
+                        <h:outputText value="#{bundle.ViewFolderLabel_folderIndex}"/>
+                        <h:outputText value="#{folderController.selected.folderIndex}" title="#{bundle.ViewFolderTitle_folderIndex}"/>
+                        <h:outputText value="#{bundle.ViewFolderLabel_folderName}"/>
+                        <h:outputText value="#{folderController.selected.folderName}" title="#{bundle.ViewFolderTitle_folderName}"/>
+                        <h:outputText value="#{bundle.ViewFolderLabel_folderNameAr}"/>
+                        <h:outputText value="#{folderController.selected.folderNameAr}" title="#{bundle.ViewFolderTitle_folderNameAr}"/>
+                        <h:outputText value="#{bundle.ViewFolderLabel_folderParentIndex}"/>
+                        <h:outputText value="#{folderController.selected.folderParentIndex}" title="#{bundle.ViewFolderTitle_folderParentIndex}"/>
+                        <h:outputText value="#{bundle.ViewFolderLabel_folderUpdateDatetime}"/>
+                        <h:outputText value="#{folderController.selected.folderUpdateDatetime}" title="#{bundle.ViewFolderTitle_folderUpdateDatetime}"/>
+                        <h:outputText value="#{bundle.ViewFolderLabel_dataClass}"/>
+                        <h:outputText value="#{folderController.selected.dataClass}" title="#{bundle.ViewFolderTitle_dataClass}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="FolderViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="FieldCreateDlg" widgetVar="FieldCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateFieldTitle}">
+            <h:form id="FieldCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{fieldController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateFieldLabel_fieldID}" for="fieldID" />
+                        <p:inputText id="fieldID" value="#{fieldController.selected.fieldID}" title="#{bundle.CreateFieldTitle_fieldID}" required="true" requiredMessage="#{bundle.CreateFieldRequiredMessage_fieldID}"/>
+                        <p:outputLabel value="#{bundle.CreateFieldLabel_fieldAlias}" for="fieldAlias" />
+                        <p:inputText id="fieldAlias" value="#{fieldController.selected.fieldAlias}" title="#{bundle.CreateFieldTitle_fieldAlias}" />
+                        <p:outputLabel value="#{bundle.CreateFieldLabel_fieldDefaultValue}" for="fieldDefaultValue" />
+                        <p:inputText id="fieldDefaultValue" value="#{fieldController.selected.fieldDefaultValue}" title="#{bundle.CreateFieldTitle_fieldDefaultValue}" />
+                        <p:outputLabel value="#{bundle.CreateFieldLabel_fieldIndex}" for="fieldIndex" />
+                        <p:inputText id="fieldIndex" value="#{fieldController.selected.fieldIndex}" title="#{bundle.CreateFieldTitle_fieldIndex}" />
+                        <p:outputLabel value="#{bundle.CreateFieldLabel_fieldLookupID}" for="fieldLookupID" />
+                        <p:inputText id="fieldLookupID" value="#{fieldController.selected.fieldLookupID}" title="#{bundle.CreateFieldTitle_fieldLookupID}" />
+                        <p:outputLabel value="#{bundle.CreateFieldLabel_fieldName}" for="fieldName" />
+                        <p:inputText id="fieldName" value="#{fieldController.selected.fieldName}" title="#{bundle.CreateFieldTitle_fieldName}" required="true" requiredMessage="#{bundle.CreateFieldRequiredMessage_fieldName}"/>
+                        <p:outputLabel value="#{bundle.CreateFieldLabel_fieldNameAr}" for="fieldNameAr" />
+                        <p:inputText id="fieldNameAr" value="#{fieldController.selected.fieldNameAr}" title="#{bundle.CreateFieldTitle_fieldNameAr}" />
+                        <p:outputLabel value="#{bundle.CreateFieldLabel_fieldOrder}" for="fieldOrder" />
+                        <p:inputText id="fieldOrder" value="#{fieldController.selected.fieldOrder}" title="#{bundle.CreateFieldTitle_fieldOrder}" required="true" requiredMessage="#{bundle.CreateFieldRequiredMessage_fieldOrder}"/>
+                        <p:outputLabel value="#{bundle.CreateFieldLabel_fieldSize}" for="fieldSize" />
+                        <p:inputText id="fieldSize" value="#{fieldController.selected.fieldSize}" title="#{bundle.CreateFieldTitle_fieldSize}" />
+                        <p:outputLabel value="#{bundle.CreateFieldLabel_fieldStatus}" for="fieldStatus" />
+                        <p:inputText id="fieldStatus" value="#{fieldController.selected.fieldStatus}" title="#{bundle.CreateFieldTitle_fieldStatus}" />
+                        <p:outputLabel value="#{bundle.CreateFieldLabel_fieldTextlines}" for="fieldTextlines" />
+                        <p:inputText id="fieldTextlines" value="#{fieldController.selected.fieldTextlines}" title="#{bundle.CreateFieldTitle_fieldTextlines}" />
+                        <p:outputLabel value="#{bundle.CreateFieldLabel_fieldTooltip}" for="fieldTooltip" />
+                        <p:inputText id="fieldTooltip" value="#{fieldController.selected.fieldTooltip}" title="#{bundle.CreateFieldTitle_fieldTooltip}" />
+                        <p:outputLabel value="#{bundle.CreateFieldLabel_fieldTooltipAr}" for="fieldTooltipAr" />
+                        <p:inputText id="fieldTooltipAr" value="#{fieldController.selected.fieldTooltipAr}" title="#{bundle.CreateFieldTitle_fieldTooltipAr}" />
+                        <p:outputLabel value="#{bundle.CreateFieldLabel_fieldType}" for="fieldType" />
+                        <p:inputText id="fieldType" value="#{fieldController.selected.fieldType}" title="#{bundle.CreateFieldTitle_fieldType}" />
+                        <p:outputLabel value="#{bundle.CreateFieldLabel_dataClass}" for="dataClass" />
+                        <p:selectOneMenu id="dataClass" value="#{fieldController.selected.dataClass}" >
+                            <f:selectItems value="#{dataClassController.itemsAvailableSelectOne}"
+                                           var="dataClassItem"
+                                           itemValue="#{dataClassItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{fieldController.create}" value="#{bundle.Save}" update="display,:FieldListForm:datalist,:growl" oncomplete="handleSubmit(args,'FieldCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="FieldCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

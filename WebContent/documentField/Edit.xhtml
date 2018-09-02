@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DocumentFieldEditDlg" widgetVar="DocumentFieldEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDocumentFieldTitle}">
+            <h:form id="DocumentFieldEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{documentFieldController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDocumentFieldLabel_sourceID}" for="sourceID" />
+                        <p:inputText id="sourceID" value="#{documentFieldController.selected.sourceID}" title="#{bundle.EditDocumentFieldTitle_sourceID}" required="true" requiredMessage="#{bundle.EditDocumentFieldRequiredMessage_sourceID}"/>
+                        <p:outputLabel value="#{bundle.EditDocumentFieldLabel_dataClassField1}" for="dataClassField1" />
+                        <p:inputText id="dataClassField1" value="#{documentFieldController.selected.dataClassField1}" title="#{bundle.EditDocumentFieldTitle_dataClassField1}" />
+                        <p:outputLabel value="#{bundle.EditDocumentFieldLabel_dataClassField2}" for="dataClassField2" />
+                        <p:inputText id="dataClassField2" value="#{documentFieldController.selected.dataClassField2}" title="#{bundle.EditDocumentFieldTitle_dataClassField2}" />
+                        <p:outputLabel value="#{bundle.EditDocumentFieldLabel_dataClassField3}" for="dataClassField3" />
+                        <p:inputText id="dataClassField3" value="#{documentFieldController.selected.dataClassField3}" title="#{bundle.EditDocumentFieldTitle_dataClassField3}" />
+                        <p:outputLabel value="#{bundle.EditDocumentFieldLabel_dataClassField4}" for="dataClassField4" />
+                        <p:inputText id="dataClassField4" value="#{documentFieldController.selected.dataClassField4}" title="#{bundle.EditDocumentFieldTitle_dataClassField4}" />
+                        <p:outputLabel value="#{bundle.EditDocumentFieldLabel_dataClassField5}" for="dataClassField5" />
+                        <p:inputText id="dataClassField5" value="#{documentFieldController.selected.dataClassField5}" title="#{bundle.EditDocumentFieldTitle_dataClassField5}" />
+                        <p:outputLabel value="#{bundle.EditDocumentFieldLabel_dataClassField6}" for="dataClassField6" />
+                        <p:inputText id="dataClassField6" value="#{documentFieldController.selected.dataClassField6}" title="#{bundle.EditDocumentFieldTitle_dataClassField6}" />
+                        <p:outputLabel value="#{bundle.EditDocumentFieldLabel_dataClassField7}" for="dataClassField7" />
+                        <p:inputText id="dataClassField7" value="#{documentFieldController.selected.dataClassField7}" title="#{bundle.EditDocumentFieldTitle_dataClassField7}" />
+                        <p:outputLabel value="#{bundle.EditDocumentFieldLabel_dataClass}" for="dataClass" />
+                        <p:selectOneMenu id="dataClass" value="#{documentFieldController.selected.dataClass}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{dataClassController.itemsAvailableSelectOne}"
+                                           var="dataClassItem"
+                                           itemValue="#{dataClassItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{documentFieldController.update}" value="#{bundle.Save}" update="display,:DocumentFieldListForm:datalist,:growl" oncomplete="handleSubmit(args, 'DocumentFieldEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="DocumentFieldEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

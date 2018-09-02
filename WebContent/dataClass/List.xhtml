@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListDataClassTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="DataClassListForm">
+                <p:panel header="#{bundle.ListDataClassTitle}">
+                    <p:dataTable id="datalist" value="#{dataClassController.items}" var="item"
+                                 selectionMode="single" selection="#{dataClassController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.dataClassID}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDataClassTitle_dataClassID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassID}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDataClassTitle_dataClassClonedIndex}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassClonedIndex}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDataClassTitle_dataClassCreatedBy}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassCreatedBy}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDataClassTitle_dataClassCreateDatetime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassCreateDatetime}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDataClassTitle_dataClassDesc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassDesc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDataClassTitle_dataClassFieldCount}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassFieldCount}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDataClassTitle_dataClassIndex}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassIndex}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDataClassTitle_dataClassName}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassName}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDataClassTitle_dataClassNameAr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassNameAr}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDataClassTitle_dataClassStatus}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassStatus}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDataClassTitle_dataClassUpdateDatetime}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassUpdateDatetime}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListDataClassTitle_dataClassUsedFor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dataClassUsedFor}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{dataClassController.prepareCreate}" update=":DataClassCreateForm" oncomplete="PF('DataClassCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":DataClassViewForm" oncomplete="PF('DataClassViewDialog').show()" disabled="#{empty dataClassController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":DataClassEditForm" oncomplete="PF('DataClassEditDialog').show()" disabled="#{empty dataClassController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{dataClassController.destroy}" update=":growl,datalist" disabled="#{empty dataClassController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

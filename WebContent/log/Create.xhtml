@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="LogCreateDlg" widgetVar="LogCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateLogTitle}">
+            <h:form id="LogCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{logController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateLogLabel_logID}" for="logID" />
+                        <p:inputText id="logID" value="#{logController.selected.logID}" title="#{bundle.CreateLogTitle_logID}" required="true" requiredMessage="#{bundle.CreateLogRequiredMessage_logID}"/>
+                        <p:outputLabel value="#{bundle.CreateLogLabel_logAlias}" for="logAlias" />
+                        <p:inputText id="logAlias" value="#{logController.selected.logAlias}" title="#{bundle.CreateLogTitle_logAlias}" />
+                        <p:outputLabel value="#{bundle.CreateLogLabel_logDatetime}" for="logDatetime" />
+                        <p:inputText id="logDatetime" value="#{logController.selected.logDatetime}" title="#{bundle.CreateLogTitle_logDatetime}" required="true" requiredMessage="#{bundle.CreateLogRequiredMessage_logDatetime}"/>
+                        <p:outputLabel value="#{bundle.CreateLogLabel_action}" for="action" />
+                        <p:selectOneMenu id="action" value="#{logController.selected.action}" >
+                            <f:selectItems value="#{actionController.itemsAvailableSelectOne}"
+                                           var="actionItem"
+                                           itemValue="#{actionItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateLogLabel_user}" for="user" />
+                        <p:selectOneMenu id="user" value="#{logController.selected.user}" >
+                            <f:selectItems value="#{userController.itemsAvailableSelectOne}"
+                                           var="userItem"
+                                           itemValue="#{userItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{logController.create}" value="#{bundle.Save}" update="display,:LogListForm:datalist,:growl" oncomplete="handleSubmit(args,'LogCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="LogCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
